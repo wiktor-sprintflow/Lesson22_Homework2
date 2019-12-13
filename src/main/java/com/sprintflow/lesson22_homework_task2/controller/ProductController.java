@@ -35,11 +35,21 @@ public class ProductController {
                     .filter(product -> product.getCategory().getName().equals(category))
                     .collect(Collectors.toList());
         }
+
+        double totalPrice = 0;
+
+        for (Product product : productList) {
+            totalPrice += product.getPrice();
+        }
         String list="";
         for (Product product : productList) {
             list += product + "<br/>";
         }
 
-        return list;
+        String listAndPrice = list + "<br/><br/> Suma cen:" + totalPrice;
+
+
+
+        return listAndPrice;
     }
 }
